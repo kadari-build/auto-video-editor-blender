@@ -1,0 +1,6 @@
+whisper
+librosa
+ffmpeg-python
+opencv-python
+numpy
+torch
