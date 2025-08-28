@@ -1,6 +1,11 @@
-whisper
+openai-whisper
 librosa
 ffmpeg-python
 opencv-python
 numpy
 torch
+google-genai
+python-dotenv
+pydantic
+streamlit
+openai
