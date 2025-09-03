@@ -8,8 +8,10 @@ An intelligent, AI-powered video editing automation tool that creates highlight 
 - **Automatic Highlight Detection**: Identifies exciting moments, funny reactions, skill plays, and intense gameplay
 - **Blender Integration**: Seamlessly creates video projects in Blender with proper sequencing and transitions
 - **Multi-Modal Analysis**: Combines audio features, speech content, and visual cues for comprehensive moment detection
+- **Streamlit Web Interface**: User-friendly web UI for easy video upload and processing
 - **Batch Processing**: Handle multiple videos and generate multiple highlight reels
 - **Customizable Detection**: Configurable keywords and excitement thresholds
+- **Cross-Platform Support**: Works on Windows, macOS, and Linux
 
 ## 🚀 What It Does
 
@@ -23,10 +25,27 @@ Perfect for content creators, gamers, and anyone who wants to quickly turn long 
 
 ## 📋 Prerequisites
 
+### System Requirements
 - **Python 3.8+**
 - **Blender 3.0+** (with Python scripting enabled)
 - **FFmpeg** installed and accessible in PATH
 - **Google AI API Key** (for Gemini integration)
+
+### Hardware Requirements
+- **RAM**: Minimum 8GB, Recommended 16GB+ for large videos
+- **Storage**: At least 2x the size of your input video for processing
+- **GPU**: Optional but highly recommended for faster processing
+  - **NVIDIA GPU** with CUDA support (GTX 1060 or better)
+  - **CUDA Toolkit** 11.0+ (for GPU acceleration)
+  - **cuDNN** compatible with your CUDA version
+
+### Performance Notes
+- **CPU-only**: Works but slower, especially with larger Whisper models
+- **GPU with CUDA**: Significantly faster processing (2-5x speedup)
+- **Model Size Impact**: 
+  - `tiny`/`base`: Fast, works well on CPU
+  - `small`/`medium`: Benefits from GPU acceleration
+  - `large`: GPU highly recommended for reasonable processing times
 
 ## 🛠️ Installation
 
@@ -56,8 +75,48 @@ Perfect for content creators, gamers, and anyone who wants to quickly turn long 
    GOOGLE_API_KEY=your_google_ai_api_key_here
    ```
 
+5. **Install FFmpeg** (if not already installed)
+   ```bash
+   # Windows (with chocolatey):
+   choco install ffmpeg
+   
+   # macOS (with homebrew):
+   brew install ffmpeg
+   
+   # Linux (Ubuntu/Debian):
+   sudo apt update && sudo apt install ffmpeg
+   ```
+
+6. **Install CUDA (Optional but Recommended)**
+   ```bash
+   # Windows: Download from NVIDIA website
+   # https://developer.nvidia.com/cuda-downloads
+   
+   # Linux (Ubuntu):
+   wget https://developer.download.nvidia.com/compute/cuda/repos/ubuntu2004/x86_64/cuda-keyring_1.0-1_all.deb
+   sudo dpkg -i cuda-keyring_1.0-1_all.deb
+   sudo apt-get update
+   sudo apt-get install cuda
+   
+   # Install PyTorch with CUDA support
+   pip install torch torchvision torchaudio --index-url https://download.pytorch.org/whl/cu118
+   ```
+
 ## 🎯 Quick Start
 
+### Option 1: Web Interface (Recommended)
+1. **Start the Streamlit app**:
+   ```bash
+   streamlit run turbine.py
+   ```
+
+2. **Open your browser** and go to `http://localhost:8501`
+
+3. **Upload your video** or enter the file path
+
+4. **Configure settings** and click "Run Auto Editing"
+
+### Option 2: Command Line
 1. **Configure your video settings** in `blender_config.json`:
    ```json
    {
@@ -81,7 +140,16 @@ Perfect for content creators, gamers, and anyone who wants to quickly turn long 
 
 ## 📖 Usage Examples
 
-### Basic Usage
+### Web Interface Usage
+```bash
+# Start the Streamlit UI
+streamlit run turbine.py
+
+# The web interface will open at http://localhost:8501
+# Upload videos, configure settings, and process with a few clicks!
+```
+
+### Command Line Usage
 ```bash
 # Analyze a video and generate edit points
 python blender_auto_editor.py --video "gaming_highlight.mp4"
@@ -93,13 +161,22 @@ python blend.py
 ### Advanced Usage
 ```bash
 # Custom analysis with specific model
-python blender_auto_editor.py --video "video.mp4" --whisper-model "large" --llm-model "gemini-2.5-flash"
+python blender_auto_editor.py --video "video.mp4" --model-size "large" --blend-mode "auto"
+
+# Test mode (analysis only, no video generation)
+python blender_auto_editor.py --video "video.mp4" --test-mode
 
 # Batch process multiple videos
 python blender_auto_editor.py --batch --input-dir "videos/" --output-dir "highlights/"
 ```
 
 ## 🔧 Configuration
+
+### Web Interface Settings
+- **Whisper Model Size**: Choose from `tiny`, `base`, `small`, `medium`, `large`
+- **Blend Mode**: `auto`, `pre-edit`, or `raw-marker`
+- **Test Mode**: Analysis only without video generation
+- **Output Folder**: Custom output directory for generated files
 
 ### Blender Configuration (`blender_config.json`)
 - `video_path`: Input video file path
@@ -116,14 +193,18 @@ python blender_auto_editor.py --batch --input-dir "videos/" --output-dir "highli
 
 ```
 auto-video-editor-blender/
-├── blender_auto_editor.py    # Main analysis and AI processing
-├── blend.py                  # Blender project generation
-├── blender_test.py           # Testing and validation
-├── blender_config.json       # Configuration settings
-├── requirements.txt          # Python dependencies
-├── video_editor.js          # Web interface (if applicable)
-├── edit_points.json         # Generated edit points
-└── README.md                # This file
+├── turbine.py                 # Streamlit web interface
+├── blender_auto_editor.py     # Main analysis and AI processing
+├── blend.py                   # Blender project generation
+├── blender_test.py            # Testing and validation
+├── blender_config.json        # Configuration settings
+├── requirements.txt           # Python dependencies
+├── edit_points.json           # Generated edit points
+├── highlights.txt             # Generated highlights summary
+├── summary_stats.txt          # Analysis statistics
+├── outputs/                   # Generated output files
+├── venv/                      # Virtual environment
+└── README.md                  # This file
 ```
 
 ## 🤖 How It Works
@@ -150,10 +231,55 @@ auto-video-editor-blender/
 ## 🐛 Troubleshooting
 
 ### Common Issues
-- **Blender not found**: Ensure Blender is installed and accessible in PATH
-- **FFmpeg errors**: Install FFmpeg and verify it's in your system PATH
-- **API key issues**: Check your `.env` file and API key validity
-- **Memory issues**: Use smaller Whisper models for large videos
+
+#### Unicode Encoding Errors (Windows)
+If you get `UnicodeEncodeError: 'charmap' codec can't encode character`:
+```powershell
+# Set environment variables before running
+$env:PYTHONIOENCODING="utf-8"
+$env:PYTHONUTF8="1"
+streamlit run turbine.py
+```
+
+#### Whisper Import Errors
+If you get import errors for whisper:
+```bash
+# Make sure you're in your virtual environment
+pip install openai-whisper
+```
+
+#### FFmpeg Not Found
+```bash
+# Windows: Download from https://ffmpeg.org/download.html
+# Or install with chocolatey: choco install ffmpeg
+
+# macOS: brew install ffmpeg
+# Linux: sudo apt install ffmpeg
+```
+
+#### Blender Integration Issues
+- Ensure Blender is installed and accessible in PATH
+- Check that Python scripting is enabled in Blender
+- Verify the Blender version is 3.0 or higher
+
+#### CUDA/GPU Issues
+```bash
+# Check if CUDA is available
+python -c "import torch; print('CUDA available:', torch.cuda.is_available())"
+
+# Check CUDA version
+nvidia-smi
+
+# If CUDA is not detected, reinstall PyTorch with CUDA support
+pip uninstall torch torchvision torchaudio
+pip install torch torchvision torchaudio --index-url https://download.pytorch.org/whl/cu118
+```
+
+#### Performance Optimization
+- **Use smaller models** (`tiny`, `base`) for CPU-only systems
+- **Enable GPU acceleration** for faster processing with larger models
+- **Monitor memory usage** - large videos may require more RAM
+- **Use SSD storage** for better I/O performance during processing
 
 ### Getting Help
 - Check the [Issues](https://github.com/yourusername/auto-video-editor-blender/issues) page
@@ -196,6 +322,7 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 - **Google Gemini** for AI content analysis
 - **Blender Foundation** for the amazing 3D software
 - **FFmpeg** for video processing capabilities
+- **Streamlit** for the web interface framework
 
 ## 📞 Support
 

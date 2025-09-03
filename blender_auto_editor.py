@@ -597,7 +597,7 @@ def main():
     # Parse command line arguments
     parser = argparse.ArgumentParser(description='Auto Video Editor')
     parser.add_argument('--video', '-v', required=True, help='Path to input video file')
-    parser.add_argument('--output', '-o', default='highlights.mp4', help='Output video path')
+    parser.add_argument('--output', '-o', default='./', help='Output directory for files and exported video')
     parser.add_argument('--test-mode', '-t', action='store_true', 
                        help='Test mode - only run analysis, skip Blender editing')
     parser.add_argument('--model-size', '-m', default='base', 
@@ -679,10 +679,10 @@ def main():
             ]
         }
 
-        edit_points_json = "edit_points.json"
-        with open(edit_points_json, "w") as f:
+        edit_points_path = os.path.join(args.output, "edit_points.json")
+        with open(edit_points_path, "w") as f:
             json.dump(edit_data, f, indent=2, default=convert_numpy)
-        print(f"\n✅ Edit points saved to: {edit_points_json}")
+        print(f"\n✅ Edit points saved to: {edit_points_path}")
 
         # Save edit points for review
         audio_points = {
@@ -704,19 +704,19 @@ def main():
         }
         
 
-        audio_points_json = "audio_edit_points.json"
-        with open(audio_points_json, "w") as f:
+        audio_points_path = os.path.join(args.output, "audio_edit_points.json")
+        with open(audio_points_path, "w") as f:
             json.dump(audio_points, f, indent=2, default=convert_numpy)
-        print(f"\n✅ Audio edit points saved to: {audio_points_json}")
+        print(f"\n✅ Audio edit points saved to: {audio_points_path}")
 
          # Create dynamic config for this specific video
         config = {
             'video_path': os.path.abspath(args.video),
             'output_path': os.path.abspath(args.output),
-            'edit_points_path': os.path.abspath(edit_points_json)
+            'edit_points_path': os.path.abspath(edit_points_path)
         }
     
-        config_file = "blender_config.json"
+        config_file = os.path.join(args.output, "blender_edit_config.json")
         # Write config for Blender script
         with open(config_file, 'w') as f:
             json.dump(config, f)
@@ -738,7 +738,7 @@ def main():
             highlights = [p for p in all_edit_points 
                          if p.confidence > 0.5 and p.event_type != "silence_removal"]
             
-            output_highlights = "highlights.txt"
+            output_highlights = os.path.join(args.output, "highlights.txt")
             with open(output_highlights, "w", encoding='utf-8') as hf:
                 hf.write(f"🎬 Potential Highlights: {len(highlights)} clips\n")
                 for point in highlights[:10]:  # Show top 10
@@ -757,7 +757,7 @@ def main():
             highlights = [p for p in all_edit_points 
                          if p.confidence > 0.5 and p.event_type != "silence_removal"]
             
-            output_highlights = "highlights.txt"
+            output_highlights = os.path.join(args.output, "highlights.txt")
             with open(output_highlights, "w", encoding='utf-8') as hf:
                 hf.write(f"🎬 Potential Highlights: {len(highlights)} clips\n")
                 for point in highlights[:10]:  # Show top 10

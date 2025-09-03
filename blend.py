@@ -46,10 +46,11 @@ class BlenderVideoEditor:
         channel=1,
         frame_start=1
         )
-
+        print(f"output path: {output_path}")
         # Setup output settings
         print(f"Setting Up Output Settings")
-        self.scene.render.filepath = output_path
+        self.scene.render.filepath = os.path.join(output_path, video_path.split("\\")[-1].split(".")[0] + "_edited.mp4")
+        print(f"File Output Path: {self.scene.render.filepath}")
         self.scene.render.fps = int(og_strip.fps)
         self.scene.render.image_settings.file_format = 'FFMPEG'
         self.scene.render.ffmpeg.format = 'MPEG4'
@@ -163,7 +164,7 @@ def main():
     script_args = sys.argv[(sys.argv.index('--')) + 1:]  # Skip the script name
     print("Arguments passed to script:", script_args)
     
-    with open('C:\\Users\\Kadar\\Documents\\Build To Barista\\auto-video-editor-blender\\blender_config.json', 'r') as f:
+    with open(script_args[0], 'r') as f:
         blender_config = json.load(f)
     
     # Validate input file
@@ -199,7 +200,7 @@ def main():
         print(f"Blender Mode: {script_args[1]}")
         if script_args[1] == 'auto':
             video_editor.create_highlight_reel(highlights, blender_config['video_path'], video_framerate)
-             #video_editor.render_video()
+            video_editor.render_video()
         elif script_args[1] == 'pre-edit':
             video_editor.create_highlight_reel(highlights, blender_config['video_path'], video_framerate)
         elif script_args[1] == 'raw-marker':

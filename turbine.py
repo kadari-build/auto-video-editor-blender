@@ -43,14 +43,11 @@ st.sidebar.text("pre-edit: automatically detects highlights, makes edits, and lo
 st.sidebar.text("raw-marker: automatically detects highlights, adds timeline markers, and loads into Blender for review")
 test_mode = st.sidebar.checkbox("Test Mode (analysis only)", value=True)
 
-if blend_mode == "auto":
-    output_dir = st.sidebar.text_input(
-        "Output Folder", value=os.path.abspath("./outputs")
-    )
-    output_path = os.path.join(output_dir, "highlights.mp4")
-    # Create output directory if it doesn't exist
-    if output_dir:
-        os.makedirs(output_dir, exist_ok=True)
+output_dir = st.sidebar.text_input("Output Folder", value=os.path.abspath("./outputs"))
+# Create output directory if it doesn't exist
+if output_dir:
+    os.makedirs(output_dir, exist_ok=True)    
+    
 
 # --- Additional UI Elements ---
 st.sidebar.markdown("---")
@@ -124,7 +121,7 @@ if video_path and os.path.exists(video_path):
                 sys.executable,  # This ensures we use the same Python as Streamlit
                 "blender_auto_editor.py",
                 "--video", video_path,
-                "--output", output_path,
+                "--output", output_dir,
                 "--model-size", model_size,
                 "--blend-mode", blend_mode,
                 "--llm-provider", provider,
