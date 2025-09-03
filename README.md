@@ -1,15 +1,15 @@
 # Auto Video Editor Blender 🎬
 
 An intelligent, AI-powered video editing automation tool that creates highlight reels using Blender. This project combines speech recognition, audio analysis, and machine learning to automatically identify exciting moments in videos and generate professional highlight clips.
+<img width="2555" height="1268" alt="AI Video Editor - Streamlit" src="https://github.com/user-attachments/assets/49befb0b-c23f-4db4-94b7-3547374cbbd6" />
 
 ## ✨ Features
 
 - **AI-Powered Content Analysis**: Uses OpenAI Whisper for speech recognition and Google Gemini for intelligent moment detection
 - **Automatic Highlight Detection**: Identifies exciting moments, funny reactions, skill plays, and intense gameplay
 - **Blender Integration**: Seamlessly creates video projects in Blender with proper sequencing and transitions
-- **Multi-Modal Analysis**: Combines audio features, speech content, and visual cues for comprehensive moment detection
+- **Multi-Modal Analysis**: Combines audio features and speech content for comprehensive moment detection
 - **Streamlit Web Interface**: User-friendly web UI for easy video upload and processing
-- **Batch Processing**: Handle multiple videos and generate multiple highlight reels
 - **Customizable Detection**: Configurable keywords and excitement thresholds
 - **Cross-Platform Support**: Works on Windows, macOS, and Linux
 
@@ -22,6 +22,9 @@ This tool automatically:
 4. **Generates** a professional highlight reel ready for export
 
 Perfect for content creators, gamers, and anyone who wants to quickly turn long videos into engaging highlight content!
+
+https://github.com/user-attachments/assets/4244f43c-ff36-4507-9649-b72fe72f4c59
+
 
 ## 📋 Prerequisites
 
@@ -104,7 +107,7 @@ Perfect for content creators, gamers, and anyone who wants to quickly turn long 
 
 ## 🎯 Quick Start
 
-### Option 1: Web Interface (Recommended)
+### Web Interface (Recommended)
 1. **Start the Streamlit app**:
    ```bash
    streamlit run turbine.py
@@ -115,28 +118,6 @@ Perfect for content creators, gamers, and anyone who wants to quickly turn long 
 3. **Upload your video** or enter the file path
 
 4. **Configure settings** and click "Run Auto Editing"
-
-### Option 2: Command Line
-1. **Configure your video settings** in `blender_config.json`:
-   ```json
-   {
-     "video_path": "path/to/your/video.mp4",
-     "output_path": "path/to/output/highlights.mp4",
-     "edit_points_path": "path/to/edit_points.json"
-   }
-   ```
-
-2. **Run the automatic analysis**:
-   ```bash
-   python blender_auto_editor.py --video "path/to/your/video.mp4"
-   ```
-
-3. **Generate the Blender project**:
-   ```bash
-   python blend.py
-   ```
-
-4. **Open the generated `.blend` file in Blender** and render your highlights!
 
 ## 📖 Usage Examples
 
@@ -218,10 +199,7 @@ auto-video-editor-blender/
 ## 📊 Supported Content Types
 
 - **Gaming Videos**: Skill plays, funny reactions, intense moments
-- **Streaming Content**: Highlight clips, memorable reactions
-- **Educational Content**: Key insights, important points
-- **Entertainment**: Funny moments, dramatic reactions
-- **Sports**: Exciting plays, key moments
+- **Support For Other Content Coming Soon**
 
 ## 🔑 API Keys Required
 
@@ -281,40 +259,16 @@ pip install torch torchvision torchaudio --index-url https://download.pytorch.or
 - **Monitor memory usage** - large videos may require more RAM
 - **Use SSD storage** for better I/O performance during processing
 
+#### WebSocket Issues on Windows
+- **Intermittent socket closure failings**
+  
 ### Getting Help
-- Check the [Issues](https://github.com/yourusername/auto-video-editor-blender/issues) page
 - Review the configuration examples
 - Ensure all dependencies are properly installed
 
-## 🤝 Contributing
-
-We welcome contributions! Here's how you can help:
-
-1. **Fork** the repository
-2. **Create** a feature branch (`git checkout -b feature/amazing-feature`)
-3. **Commit** your changes (`git commit -m 'Add amazing feature'`)
-4. **Push** to the branch (`git push origin feature/amazing-feature`)
-5. **Open** a Pull Request
-
-### Development Setup
-```bash
-# Install development dependencies
-pip install -r requirements.txt
-pip install pytest black flake8
-
-# Run tests
-python -m pytest
-
-# Format code
-black .
-
-# Lint code
-flake8 .
-```
-
 ## 📄 License
 
-This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
+This project currently has a Portfolio License - see the [LICENSE](LICENSE) file for details.
 
 ## 🙏 Acknowledgments
 
@@ -323,15 +277,3 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 - **Blender Foundation** for the amazing 3D software
 - **FFmpeg** for video processing capabilities
 - **Streamlit** for the web interface framework
-
-## 📞 Support
-
-- **Issues**: [GitHub Issues](https://github.com/yourusername/auto-video-editor-blender/issues)
-- **Discussions**: [GitHub Discussions](https://github.com/yourusername/auto-video-editor-blender/discussions)
-- **Wiki**: [Project Wiki](https://github.com/yourusername/auto-video-editor-blender/wiki)
-
----
-
-⭐ **Star this repository if you find it helpful!** ⭐
-
-Made with ❤️ for content creators and video editors everywhere.
