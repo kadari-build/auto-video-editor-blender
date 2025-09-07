@@ -26,13 +26,13 @@ https://github.com/user-attachments/assets/4244f43c-ff36-4507-9649-b72fe72f4c59
 
 ## ✨ Features
 
-- **AI-Powered Content Analysis**: Uses OpenAI Whisper for speech recognition and Google Gemini for intelligent moment detection
-- **Automatic Highlight Detection**: Identifies exciting moments, funny reactions, skill plays, and intense gameplay
-- **Blender Integration**: Seamlessly creates video projects in Blender with proper sequencing and transitions
+- **AI-Powered Content Analysis**: Uses OpenAI Whisper for speech recognition and LLM sentiment analysis for moment detection
+- **Automatic Highlight Detection**: Identifies moments that are potential highlights
+- **Blender Integration**: Seamlessly creates video projects in Blender with proper sequencing
 - **Multi-Modal Analysis**: Combines audio features and speech content for comprehensive moment detection
 - **Streamlit Web Interface**: User-friendly web UI for easy video upload and processing
 - **Customizable Detection**: Configurable keywords and excitement thresholds
-- **Cross-Platform Support**: Works on Windows, macOS, and Linux
+- **Cross-Platform Support**: Works on Windows. Limited macOS and Linux support.
 
 ## ✨ Challenges
 
