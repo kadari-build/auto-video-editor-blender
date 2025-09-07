@@ -33,11 +33,11 @@ https://github.com/user-attachments/assets/4244f43c-ff36-4507-9649-b72fe72f4c59
 - **Cross-Platform Support**: Works on Windows. Limited macOS and Linux support.
 
 ## ✨ Challenges
-- Consistent identification of relevant edit points and segments
-- Consolidation of overlapping segments while preserving the most interesting or relevant segments
-- Short form video support (using multiple videos to sequence and edit
-- Seamless edit point cuts
-- Low to no cost video and audio LLM analysis
+- Accurate edit identification: Consistent identification of relevant edit points and segments
+- Smart edit segment consolidation: Automatically merging overlapping or adjacent exciting moments while preserving peak intensity and avoiding redundancy
+- Multi-video sequencing: Creating cohesive content by combining highlights from multiple source videos with engaging sequencing, proper flow and transitions
+- Precise editing: Achieving frame-accurate cuts and seamless transitions between automated edit point cuts
+- Cost-efficient LLM analysis: Implementing scalable video/audio analysis using LLM models
 
 ## 📋 Prerequisites
 
@@ -141,43 +141,6 @@ streamlit run turbine.py
 
 # The web interface will open at http://localhost:8501
 # Upload videos, configure settings, and process with a few clicks!
-```
-
-## 🔧 Configuration
-
-### Web Interface Settings
-- **Whisper Model Size**: Choose from `tiny`, `base`, `small`, `medium`, `large`
-- **Blend Mode**: `auto`, `pre-edit`, or `raw-marker`
-- **Test Mode**: Analysis only without video generation
-- **Output Folder**: Custom output directory for generated files
-
-### Blender Configuration (`blender_config.json`)
-- `video_path`: Input video file path
-- `output_path`: Output highlight video path
-- `edit_points_path`: JSON file containing detected edit points
-
-### Analysis Settings
-- **Whisper Model**: Choose from `tiny`, `base`, `small`, `medium`, `large`
-- **LLM Model**: Currently supports Google Gemini models
-- **Excitement Keywords**: Customizable list of words that indicate exciting moments
-- **Confidence Thresholds**: Adjust sensitivity of moment detection
-
-## 🏗️ Project Structure
-
-```
-auto-video-editor-blender/
-├── turbine.py                 # Streamlit web interface
-├── blender_auto_editor.py     # Main analysis and AI processing
-├── blend.py                   # Blender project generation
-├── blender_test.py            # Testing and validation
-├── blender_config.json        # Configuration settings
-├── requirements.txt           # Python dependencies
-├── edit_points.json           # Generated edit points
-├── highlights.txt             # Generated highlights summary
-├── summary_stats.txt          # Analysis statistics
-├── outputs/                   # Generated output files
-├── venv/                      # Virtual environment
-└── README.md                  # This file
 ```
 
 ## 🔑 API Keys Required
