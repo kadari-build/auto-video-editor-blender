@@ -1,17 +1,10 @@
-# Auto Video Editor Blender 🎬
+# Turbine: Automated Video Editor 🎬
 
-An intelligent, AI-powered video editing automation tool that creates highlight reels using Blender. This project combines speech recognition, audio analysis, and machine learning to automatically identify exciting moments in videos and generate professional highlight clips.
+AI-powered video editing automation tool that identifies highlights in long-form video and implements edits using Blender. This project combines speech recognition, audio analysis, and machine learning to automatically identify exciting moments in videos and generate professional highlight clips.
 <img width="2555" height="1268" alt="AI Video Editor - Streamlit" src="https://github.com/user-attachments/assets/49befb0b-c23f-4db4-94b7-3547374cbbd6" />
 
-## ✨ Features
-
-- **AI-Powered Content Analysis**: Uses OpenAI Whisper for speech recognition and Google Gemini for intelligent moment detection
-- **Automatic Highlight Detection**: Identifies exciting moments, funny reactions, skill plays, and intense gameplay
-- **Blender Integration**: Seamlessly creates video projects in Blender with proper sequencing and transitions
-- **Multi-Modal Analysis**: Combines audio features and speech content for comprehensive moment detection
-- **Streamlit Web Interface**: User-friendly web UI for easy video upload and processing
-- **Customizable Detection**: Configurable keywords and excitement thresholds
-- **Cross-Platform Support**: Works on Windows, macOS, and Linux
+## ✨ Problem
+With long-form video, editing can take hours. It is also difficult to identify segments of video media that may be of interest. 
 
 ## 🚀 What It Does
 
@@ -24,6 +17,23 @@ This tool automatically:
 Perfect for content creators, gamers, and anyone who wants to quickly turn long videos into engaging highlight content!
 
 https://github.com/user-attachments/assets/4244f43c-ff36-4507-9649-b72fe72f4c59
+
+## 📊 Supported Content Types
+
+- **Gaming Videos**: Skill plays, funny reactions, intense moments
+- **Support For Other Content Coming Soon**
+
+## ✨ Features
+
+- **AI-Powered Content Analysis**: Uses OpenAI Whisper for speech recognition and Google Gemini for intelligent moment detection
+- **Automatic Highlight Detection**: Identifies exciting moments, funny reactions, skill plays, and intense gameplay
+- **Blender Integration**: Seamlessly creates video projects in Blender with proper sequencing and transitions
+- **Multi-Modal Analysis**: Combines audio features and speech content for comprehensive moment detection
+- **Streamlit Web Interface**: User-friendly web UI for easy video upload and processing
+- **Customizable Detection**: Configurable keywords and excitement thresholds
+- **Cross-Platform Support**: Works on Windows, macOS, and Linux
+
+## ✨ Challenges
 
 
 ## 📋 Prerequisites
@@ -130,27 +140,6 @@ streamlit run turbine.py
 # Upload videos, configure settings, and process with a few clicks!
 ```
 
-### Command Line Usage
-```bash
-# Analyze a video and generate edit points
-python blender_auto_editor.py --video "gaming_highlight.mp4"
-
-# Create Blender project from edit points
-python blend.py
-```
-
-### Advanced Usage
-```bash
-# Custom analysis with specific model
-python blender_auto_editor.py --video "video.mp4" --model-size "large" --blend-mode "auto"
-
-# Test mode (analysis only, no video generation)
-python blender_auto_editor.py --video "video.mp4" --test-mode
-
-# Batch process multiple videos
-python blender_auto_editor.py --batch --input-dir "videos/" --output-dir "highlights/"
-```
-
 ## 🔧 Configuration
 
 ### Web Interface Settings
@@ -187,19 +176,6 @@ auto-video-editor-blender/
 ├── venv/                      # Virtual environment
 └── README.md                  # This file
 ```
-
-## 🤖 How It Works
-
-1. **Audio Analysis**: Uses Whisper for speech-to-text and librosa for audio feature extraction
-2. **Content Intelligence**: Google Gemini analyzes transcripts to identify exciting moments
-3. **Moment Detection**: Combines audio cues, speech content, and AI analysis
-4. **Blender Automation**: Generates complete Blender projects with proper sequencing
-5. **Export Ready**: Creates highlight reels ready for final rendering
-
-## 📊 Supported Content Types
-
-- **Gaming Videos**: Skill plays, funny reactions, intense moments
-- **Support For Other Content Coming Soon**
 
 ## 🔑 API Keys Required
 
