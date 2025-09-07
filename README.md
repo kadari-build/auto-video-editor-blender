@@ -5,17 +5,15 @@ AI-powered video editing automation tool that identifies highlights in long-form
 <img width="2555" height="1268" alt="AI Video Editor - Streamlit" src="https://github.com/user-attachments/assets/49befb0b-c23f-4db4-94b7-3547374cbbd6" />
 
 ## ✨ Problem
-Editing video content can be a daunting taks. Video editing represents 70-80% of content creation time, with creators manually reviewing hours of footage to identify 2-3 minutes of highlight-worthy moments. This process is both time-intensive and inconsistent, often missing great content buried in long recordings
+Editing video content can be a daunting task. Video editing represents 70-80% of content creation time, with creators manually reviewing hours of footage to identify 2-3 minutes of highlight-worthy moments. This process is both time-intensive and inconsistent, often missing great content buried in long recordings
 
 ## 🚀 What It Does
 
 This tool automatically:
-1. **Analyzes** your video content using AI
+1. **Analyzes** your video content using AI and audio heuristics
 2. **Detects** exciting moments (funny reactions, skill plays, intense gameplay)
-3. **Creates** a Blender project with all the highlights
+3. **Creates** a Blender project with pre-edited video or pre-defined edit points
 4. **Generates** a professional highlight reel ready for export
-
-Perfect for content creators, gamers, and anyone who wants to quickly turn long videos into engaging highlight content!
 
 https://github.com/user-attachments/assets/4244f43c-ff36-4507-9649-b72fe72f4c59
 
@@ -35,7 +33,11 @@ https://github.com/user-attachments/assets/4244f43c-ff36-4507-9649-b72fe72f4c59
 - **Cross-Platform Support**: Works on Windows. Limited macOS and Linux support.
 
 ## ✨ Challenges
-
+- Consistent identification of relevant edit points and segments
+- Consolidation of overlapping segments while preserving the most interesting or relevant segments
+- Short form video support (using multiple videos to sequence and edit
+- Seamless edit point cuts
+- Low to no cost video and audio LLM analysis
 
 ## 📋 Prerequisites
 
