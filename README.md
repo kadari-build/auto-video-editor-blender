@@ -1,10 +1,11 @@
 # Turbine: Automated Video Editor 🎬
 
 AI-powered video editing automation tool that identifies highlights in long-form video and implements edits using Blender. This project combines speech recognition, audio analysis, and machine learning to automatically identify exciting moments in videos and generate professional highlight clips.
+
 <img width="2555" height="1268" alt="AI Video Editor - Streamlit" src="https://github.com/user-attachments/assets/49befb0b-c23f-4db4-94b7-3547374cbbd6" />
 
 ## ✨ Problem
-With long-form video, editing can take hours. It is also difficult to identify segments of video media that may be of interest. 
+Editing video content can be a daunting taks. Video editing represents 70-80% of content creation time, with creators manually reviewing hours of footage to identify 2-3 minutes of highlight-worthy moments. This process is both time-intensive and inconsistent, often missing great content buried in long recordings
 
 ## 🚀 What It Does
 
