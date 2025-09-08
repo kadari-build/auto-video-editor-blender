@@ -203,19 +203,7 @@ pip install torch torchvision torchaudio --index-url https://download.pytorch.or
 
 #### WebSocket Issues on Windows
 - **Intermittent socket closure failings**
-  
-### Getting Help
-- Review the configuration examples
-- Ensure all dependencies are properly installed
 
 ## 📄 License
 
 This project currently has a Portfolio License - see the [LICENSE](LICENSE) file for details.
-
-## 🙏 Acknowledgments
-
-- **OpenAI Whisper** for speech recognition
-- **Google Gemini** for AI content analysis
-- **Blender Foundation** for the amazing 3D software
-- **FFmpeg** for video processing capabilities
-- **Streamlit** for the web interface framework
